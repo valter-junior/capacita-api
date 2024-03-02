@@ -3,7 +3,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-API_BASE = config('postgresql://postgres:12345678@localhost:5432/capacita')
+API_BASE = 'postgresql://postgres:12345678@localhost:5432/capacita'
 
 SQLALCHEMY_DATABASE_URL = "sqlite:///./sql_app.db"
 SQLALCHEMY_DATABASE_URL = API_BASE
