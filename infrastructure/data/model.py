@@ -6,8 +6,8 @@ import datetime
 
 from infrastructure.data.database import Base
 
-class Knowledgement(Base):
-    __tablename__ = 'knowledgement'
+class Knowledge(Base):
+    __tablename__ = 'knowledge'
     id = Column(UUID, primary_key=True, index=True)
     title = Column(String, nullable=False)
     description = Column(String, nullable=False)

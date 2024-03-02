@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-class KnowledgementBase(BaseModel):
+class KnowledgeBase(BaseModel):
     title: str
     description: str
     knowledgement_type: str
