@@ -4,7 +4,7 @@ from sqlalchemy.orm import relationship
 
 import datetime 
 
-from database import Base
+from infrastructure.data.database import Base
 
 class Knowledgement(Base):
     __tablename__ = 'knowledgement'
