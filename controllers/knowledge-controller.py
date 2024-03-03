@@ -13,10 +13,6 @@ router = APIRouter(
 )
 
 
-@router.post("/")
+@router.post("/create")
 async def create_knowledge(knowledge: schemas.KnowledgementBase):
     return KnowledgeService.create_knowledge(knowledge)
-
-
-
-
