@@ -9,6 +9,8 @@ from gspread_dataframe import set_with_dataframe
 from infrastructure.data import model
 from infrastructure.data.database import engine
 
+from controllers import knowledge_controller
+
 
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -25,3 +27,5 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(knowledge_controller.router)

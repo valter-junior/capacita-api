@@ -4,21 +4,24 @@ from infrastructure.data import model, schemas
 
 
 class KnowledgeRepository:
-    def get_knowledgements(self, db: Session):
-        return db.query(model.Knowledgement).all()
+    def __init__(self, db: Session):
+        self.db = db
 
-    def get_knowledgement(self, db: Session, knowledgement_id: uuid.UUID):
+    def get_all(self):
+        return self.db.query(model.Knowledge).all()
+
+    def get(self, knowledgement_id: uuid.UUID):
         return (
-            db.query(model.Knowledgement)
-            .filter(model.Knowledgement.id == knowledgement_id)
+            self.db.query(model.Knowledge)
+            .filter(model.Knowledge.id == knowledgement_id)
             .first()
         )
 
-    def create_knowledgement(
-        self, db: Session, knowledgement: schemas.KnowledgementBase
+    def create(
+        self, knowledgement: schemas.KnowledgeBase
     ):
 
-        db_knowledgement = model.Knowledgement(
+        db_knowledgement = model.Knowledge(
             id=uuid.uuid4().hex,
             title=knowledgement.title,
             description=knowledgement.description,
@@ -27,6 +30,6 @@ class KnowledgeRepository:
             url=knowledgement.url,
             is_active=knowledgement.is_active,
         )
-        db.add(db_knowledgement)
-        db.commit()
-        db.refresh(db_knowledgement)
+        self.db.add(db_knowledgement)
+        self.db.commit()
+        self.db.refresh(db_knowledgement)
